@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0, user-scalable=no" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="/js/1.0.0-beta2/ui/ui.css" />
+    <link rel="stylesheet" href="chat.css" />
+    <script src="/jquery/1.2.0/jquery-1.8.2.min.js"></script>
+    <!--script src="/js/1.0.0-beta2/utils.js"></script>
+    <script src="/js/1.0.0-beta2/webpush.js"></script>
+    <script src="/js/1.0.0-beta2/objstore.js"></script>
+    <script src="/js/1.0.0-beta2/appendstore.js"></script>
+    <script src="/js/1.0.0-beta2/dopamine.js"></script-->
+    <script src="/js/1.0.0-beta2/dopamine.min.js"></script>
+    <!--script src="/js/1.0.0-beta2/ui/ui.js"></script>
+    <script src="/js/1.0.0-beta2/ui/tapclick.js"></script>
+    <script src="/js/1.0.0-beta2/ui/basiclist.js"></script-->
+    <script src="/js/1.0.0-beta2/ui/ui.min.js"></script>
+    <script src="qrcode.js"></script>
+    <script src="chat.js"></script>
+    
+    <style type="text/css">
+#qr-div {
+    position: absolute;
+    top: 50%; left: 50%;
+    margin-top: -82px; margin-left: -82px;
+}
+#action-set-name {
+    display:block;
+}
+#action-set-name:link {color:#333333; text-decoration: none;}
+#action-set-name:visited {color:#333333; text-decoration: none;}
+#action-set-name:hover {color:#333333; text-decoration: none;} 
+    </style>
+
+  </head>
+
+  <body>
+
+    <!------------------- Sessions Page --------------------->
+
+    <div class="page active-page" id="sessions-page">
+      <div class="action-menu" id="sessions-action-menu">
+        <div class="action-btn"><a href="#set-name-page"
+                                   id="action-set-name">
+            Set name
+        </a></div>
+        <div class="action-btn">Add to home screen</div>
+        <div class="action-btn-hide"
+             data-action-menu-id="#sessions-action-menu">Hide menu</div>
+      </div>
+      <div class="header">
+        <div class="header-mid-btn">
+          <a id="new-chat-btn" href="#chat-page"></a>
+        </div>
+        <a class="header-icon-right header-icon-action"
+           data-action-menu-id="#sessions-action-menu"></a>
+      </div>
+      <div class="blank-line"></div>
+      <div class="page-content" id="sessions-content">
+        <h1>Your chat history:</h1>
+      </div>
+    </div>
+
+    <!------------------------------------------------------->
+
+    <!--------------------- Chat page ----------------------->
+
+    <div class="page" id="chat-page">
+      <div class="action-menu" id="chat-action-menu">
+        <div class="action-btn" id="invite-qr">Invite via QR code</div>
+        <div class="action-btn">Disable notifications</div>
+        <div class="action-btn-hide"
+             data-action-menu-id="#chat-action-menu">Hide menu</div>
+      </div>
+      <div class="header">
+        <a class="header-icon-left header-icon-list" href="#sessions-page"></a>
+        <h1 id="chat-title">Chat</h1>
+        <a class="header-icon-right header-icon-action"
+           data-action-menu-id="#chat-action-menu"></a>
+      </div>
+
+      <div class="page-content" id="chat-message-div">
+        <div id="chat-messages"></div>
+      </div>
+
+      <div class="footer">
+          <textarea id="message-text" placeholder="Type message"></textarea>
+        <a id="chat-arrow" href="#chat-page" data-disable-intercept="true">
+        </a>
+      </div>
+    </div>    
+
+    <!------------------------------------------------------->
+
+    <!-------------------- Set name page -------------------->
+
+    <div class="page" id="set-name-page">
+      <div class="header">
+        <a class="header-btn-left" href="#sessions-page">Cancel</a>
+        <h1>Set your name</h1>
+        <a class="header-btn-right" href="#chat-page"
+           id="set-name-btn">Save</a>
+      </div>
+      <div class="page-content">
+        <div class="text-container">
+          <textarea id="your-name" placeholder="Your name"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------------------------------->
+
+
+    <!-------------------- Export viq QR -------------------->
+    <div class="page" id="export-url-page">
+      <div class="header">
+        <a class="header-btn-left" href="#chat-page">Done</a>
+        <h1>Scan code to chat</h1>
+      </div>
+      <div class="page-content">
+        <div id="qr-div"></div>
+      </div>
+    </div>
+    <!------------------------------------------------------->
+
+
+  </body>
+</html>
